@@ -1,0 +1,24 @@
+{
+    "starting": [
+        "[green]Starting the update..."
+    ],
+    "download": [
+        "[yellow]Downloading SmapIt..."
+    ],
+    "installing": [
+        "[yellow]Installing SmapIt..."
+    ],
+    "success": [
+        "[green]SmapIt updated successfully, the game will restart and this window will close."
+    ],
+    "error": [
+        "[red]An error occurred while trying to update. This could have happened for several reasons.",
+        "Visit the SmapIt GitHub for more information."
+    ],
+    "smapit_closed_err": [
+        "[red]An error occurred while trying to update: The main SmapIt process did not close automatically after 15 seconds."
+    ],
+    "enter_to_leave": [
+        "[yellow]Press Enter to exit."
+    ]
+}

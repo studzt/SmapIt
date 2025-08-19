@@ -1,0 +1,28 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <AssemblyName>SmapitUpdater</AssemblyName>
+
+	  <Version>0.1.0</Version>
+
+	  <ApplicationIcon>SmapIt.ico</ApplicationIcon>
+	  
+  </PropertyGroup>
+	
+  <ItemGroup>
+    <Content Include="SmapIt.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="lang\*.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+  </ItemGroup>
+
+</Project>

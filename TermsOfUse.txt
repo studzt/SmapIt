@@ -1,0 +1,26 @@
+Terms of Use – SmapIt  
+Last updated on 12/05/2025
+
+1. About SmapIt
+
+SmapIt is a free and open-source tool. It facilitates the installation and updating of SMAPI (mod loader) for the game Stardew Valley and allows users to launch the game with mods in a practical way.
+
+2. Use at User's Own Risk
+
+Using SmapIt is completely optional. The developer is not responsible for any damages caused by SmapIt, including but not limited to:
+
+- Damage to the game or saved files;  
+- Errors caused by mods installed via SMAPI;  
+- Misuse of the program by the user.
+
+3. Changes and Updates
+
+SmapIt may be updated or modified at any time without prior notice. The automatic update process for SmapIt is available, but it is the user's responsibility to ensure it is functioning correctly to support the latest versions of SMAPI or Stardew Valley.
+
+4. Relationships
+
+SmapIt is an independent tool and has no official affiliation with SMAPI or Stardew Valley. The developer of SmapIt is not affiliated, endorsed, or approved by the developers of Stardew Valley or SMAPI.
+
+5. Changes to the Terms
+
+These Terms of Use may be updated at any time without prior notice. It is the user’s responsibility to review them periodically. Continued use of SmapIt after any changes implies acceptance of the revised terms.
