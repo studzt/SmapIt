@@ -1,5 +1,4 @@
 {
-    // === Main Menu ===
     "main_menu": {
         "main": [
             "[yellow]SmapIt - Fazendo o bom ainda melhor.",
@@ -16,10 +15,8 @@
         ]
     },
 
-    // === Options Menu ===
     "options": {
 
-        // --- Install Flow ---
         "install": {
             "searching_stardew": [
                 "[yellow]Procurando por instalações do Stardew Valley..."
@@ -49,7 +46,6 @@
                 "3) Voltar ao menu inicial."
             ],
 
-            // --- SMAPI Installation ---
             "smapi_check": [
                 "[yellow]Verificando se o Smapi está instalado..."
             ],
@@ -69,7 +65,6 @@
                 "[red]Ocorreu um erro ao tentar baixar o Smapi. Tente novamente mais tarde."
             ],
 
-            // --- SmapIt Installation ---
             "smapit_install": [
                 "[yellow]Instalando o SmapIt..."
             ],
@@ -98,7 +93,6 @@
             ]
         },
 
-        // --- Uninstall Flow ---
         "uninstall": {
             "select_installation": [
                 "[darkyellow]Selecione uma instalação do Stardew Valley para continuar:"
@@ -125,7 +119,6 @@
             ]
         },
 
-        // --- Settings Menu ---
         "settings": {
             "settings": [
                 "[darkyellow]Escolha uma configuração:",
@@ -161,7 +154,6 @@
         }
     },
 
-    // === Game Start and Update Flow ===
     "start_types": {
         "run": {
             "select_installation": [
