@@ -1,7 +1,7 @@
 {
     "main_menu": {
         "main": [
-            "[yellow]SmapIt - Making good even better.",
+            "[yellow]SmapIt - Making the good even better.",
             "-------------------------------------",
             "",
             "[darkyellow]What would you like to do?[white]",
@@ -165,7 +165,7 @@
                 "[red]SMAPI file not found in this installation. Try reinstalling SmapIt or SMAPI."
             ],
             "smapit_not_found": [
-                "[red]Não foi encontrado o arquivo do SmapIt nessa instalação. Tente reinstalar o SmapIt ou o SMAPI."
+                "[red] SmapIt file was not found in this installation. Try reinstaling SmapIt or SMAPI."
             ],
             "smapit_update_check": [
                 "[yellow]Checking for SmapIt updates..."
