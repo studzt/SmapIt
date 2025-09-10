@@ -14,9 +14,7 @@
             "[red]Invalid input! Choose a valid option."
         ]
     },
-
     "options": {
-
         "install": {
             "searching_stardew": [
                 "[yellow]Looking for Stardew Valley installations..."
@@ -45,7 +43,6 @@
                 "2) No.",
                 "3) Return to main menu."
             ],
-
             "smapi_check": [
                 "[yellow]Checking if SMAPI is installed..."
             ],
@@ -64,7 +61,6 @@
             "smapi_error": [
                 "[red]An error occurred while trying to download SMAPI. Try again later."
             ],
-
             "smapit_install": [
                 "[yellow]Installing SmapIt..."
             ],
@@ -92,7 +88,6 @@
                 "[red]An error occurred while trying to install SmapIt:"
             ]
         },
-
         "uninstall": {
             "select_installation": [
                 "[darkyellow]Select a Stardew Valley installation to continue:"
@@ -118,7 +113,6 @@
                 "[green]SmapIt was successfully uninstalled from this installation."
             ]
         },
-
         "settings": {
             "settings": [
                 "[darkyellow]Choose a setting:",
@@ -153,7 +147,6 @@
             ]
         }
     },
-
     "start_types": {
         "run": {
             "select_installation": [
@@ -170,6 +163,9 @@
             ],
             "smapi_not_found": [
                 "[red]SMAPI file not found in this installation. Try reinstalling SmapIt or SMAPI."
+            ],
+            "smapit_not_found": [
+                "[red]Não foi encontrado o arquivo do SmapIt nessa instalação. Tente reinstalar o SmapIt ou o SMAPI."
             ],
             "smapit_update_check": [
                 "[yellow]Checking for SmapIt updates..."
