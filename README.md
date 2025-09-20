@@ -9,6 +9,7 @@
 
 [![Latest](https://img.shields.io/github/v/release/studzt/SmapIt)](https://github.com/studzt/SmapIt/releases/latest)
 [![Downloads](https://img.shields.io/github/downloads-pre/studzt/SmapIt/latest/total)](https://github.com/studzt/SmapIt/releases/latest)
+[![Workflow Status](https://img.shields.io/github/actions/workflow/status/studzt/SmapIt/.NET%20Debug.yaml)](https://github.com/studzt/SmapIt/actions)
 [![Crowdin](https://badges.crowdin.net/smapit/localized.svg)](https://crowdin.com/project/smapit)
 [![License](https://img.shields.io/github/license/studzt/SmapIt)](https://github.com/studzt/SmapIt)
 
