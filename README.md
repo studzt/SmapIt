@@ -1,3 +1,6 @@
+> [!CAUTION]
+> The only official places to download SmapIt are this GitHub repository and [winget](https://winstall.app/apps/SmapItProject.SmapIt). Any other websites offering downloads are not reviewed or approved by us.
+
 <h1 align="center">
   SmapIt - Making the good even better.
 </h1>
@@ -48,3 +51,4 @@ If you found a bug, please open an issue.
 
 ## ❤️ Thank you
 Thanks for testing my app in beta version!
+Feedback is appreciated.
