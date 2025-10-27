@@ -1,7 +1,6 @@
-﻿// https://github.com/bloxstraplabs/bloxstrap/blob/main/Bloxstrap/Utility/Shortcut.cs
-
-using System;
+﻿using System;
 using System.IO;
+using WindowsShortcutFactory;
 using SmapIt.Core;
 
 namespace SmapIt.Utils
@@ -20,8 +19,14 @@ namespace SmapIt.Utils
 
             try
             {
-                var shortcut = ShellLink.Shortcut.CreateShortcut(exePath, exeArgs, lnkPath, iconPath, 0);
-                shortcut.WriteToFile(lnkPath);
+                using var shortcut = new WindowsShortcut
+                {
+                    Path = exePath,
+                    Arguments = exeArgs,
+                    IconLocation = iconPath
+                };
+
+                shortcut.Save(lnkPath);
 
                 AppCore.Logger.WriteLine(LOG_IDENT, $"Shortcut created successfully: {lnkPath}");
             }

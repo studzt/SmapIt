@@ -7,7 +7,7 @@
     <Nullable>enable</Nullable>
     <AssemblyName>SmapIt Manager</AssemblyName>
 	
-	  <Version>0.2.1</Version>
+	  <Version>0.2.2</Version>
 	
 	  <ApplicationIcon>SmapIt.ico</ApplicationIcon>
 	  
@@ -18,8 +18,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
-    <PackageReference Include="securifybv.ShellLink" Version="0.1.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.4" />
+    <PackageReference Include="WindowsShortcutFactory" Version="1.2.0" />
   </ItemGroup>
 
   <ItemGroup>
