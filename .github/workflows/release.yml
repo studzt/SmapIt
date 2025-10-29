@@ -1,0 +1,59 @@
+name: Release
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Release version (ex: 0.2.3)'
+        required: true
+
+permissions:
+  contents: write
+  
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+      - name: Code checkout
+        uses: actions/checkout@v4
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '8.0.x'
+
+      - name: Build Main
+        run: dotnet publish ./Main/SmapIt.csproj -c Release -p:PublishSingleFile=true -p:CommitHash=${{ github.sha }} -p:CommitRef=${{ github.ref_type }}/${{ github.ref_name }} -p:DebugType=None -p:IncludeSymbols=false -r win-x64 --self-contained false -o output
+      
+      - name: Build Updater
+        run: dotnet publish ./Updater/Updater.csproj -c Release -p:PublishSingleFile=true -p:CommitHash=${{ github.sha }} -p:CommitRef=${{ github.ref_type }}/${{ github.ref_name }} -p:DebugType=None -p:IncludeSymbols=false -r win-x64 --self-contained false -o output
+        
+      - name: Install Inno Setup
+        run: choco install innosetup -y
+
+      - name: Build Installer
+        shell: pwsh
+        run: |
+          $content = Get-Content installer.iss
+          $version = "${{ github.event.inputs.version }}"
+          $content = $content -replace '^\s*#define\s+MyAppVersion\s+".*"', "#define MyAppVersion `"$version`""
+          $content = $content -replace '^\s*OutputBaseFilename=.*', "OutputBaseFilename=SmapIt-v$version"
+          $content | Set-Content installer_temp.iss
+          
+          iscc installer_temp.iss
+
+      - name: Create Git tag
+        run: |
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
+          git tag v${{ github.event.inputs.version }}
+          git push origin v${{ github.event.inputs.version }}
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: v${{ github.event.inputs.version }}
+          files: output/Installer/SmapIt-v${{ github.event.inputs.version }}.exe
+          draft: true
+          token: ${{ secrets.GITHUB_TOKEN }}
