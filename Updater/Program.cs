@@ -78,6 +78,7 @@ namespace main
             catch (Exception ex)
             {
                 Console.WriteLine(ex.ToString());
+                Console.ReadLine();
             }
             finally
             {

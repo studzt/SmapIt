@@ -5,9 +5,9 @@
     <TargetFramework>net8.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-    <AssemblyName>SmapitUpdater</AssemblyName>
+    <AssemblyName>SmapIt Updater</AssemblyName>
 
-	  <Version>0.2.0</Version>
+	  <Version>0.2.2</Version>
 
 	  <ApplicationIcon>SmapIt.ico</ApplicationIcon>
 	  

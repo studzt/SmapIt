@@ -17,18 +17,18 @@ namespace SmapIt.Core
 
         public async Task Update(HttpClient client, string smapitShortcut)
         {
-            var Mutex = new AsyncMutex("SmapIt_Update");
+            var Mutex = new AsyncMutex("SmapIt_Updater");
             var translator = new Translator();
 
             try
             {
                 await Mutex.AcquireAsync(CancellationToken.None);
 
-                string updaterPath = Path.Combine(exeDir, "SmapItUpdater.exe");
+                string updaterPath = Path.Combine(exeDir, "SmapIt Updater.exe");
                 if (!File.Exists(updaterPath))
                 {
                     translator.print("start_types.run.error_smapit");
-                    AppCore.Logger.WriteLine(LOG_IDENT, $"SmapItUpdater.exe not found in: {updaterPath}");
+                    AppCore.Logger.WriteLine(LOG_IDENT, $"SmapIt Updater.exe not found in: {updaterPath}");
                     return;
                 }
 
