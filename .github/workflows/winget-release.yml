@@ -25,7 +25,8 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           RELEASE_TAG: ${{ github.event.release.tag_name }}
         run: |
-          echo "version=$env:RELEASE_TAG" >> $env:GITHUB_OUTPUT
+          $version = $env:RELEASE_TAG -replace '^v',''
+          echo "version=$version" >> $env:GITHUB_OUTPUT
           $assetUrl = gh release view $env:RELEASE_TAG --json assets --jq ".assets[0].url" | Out-String -Trim
           echo "asset_url=$assetUrl" >> $env:GITHUB_OUTPUT
 
