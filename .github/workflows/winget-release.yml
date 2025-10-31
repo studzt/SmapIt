@@ -1,0 +1,38 @@
+name: Winget Release
+
+on:
+  release:
+    types: [published]
+
+permissions:
+  contents: read
+
+jobs:
+  publish:
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install wingetcreate
+        run: |
+          winget install --id Microsoft.WingetCreate --accept-source-agreements --accept-package-agreements
+
+      - name: Get release information
+        id: release_info
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          echo "version=${GITHUB_REF_NAME}" >> $env:GITHUB_OUTPUT
+          $assetUrl = gh release view $env:GITHUB_REF_NAME --json assets --jq ".assets[0].url"
+          echo "asset_url=$assetUrl" >> $env:GITHUB_OUTPUT
+
+      - name: Publish to winget repository
+        env:
+          WINGET_TOKEN: ${{ secrets.WINGET_TOKEN }}
+        run: |
+          $version = "${{ steps.release_info.outputs.version }}"
+          $url = "${{ steps.release_info.outputs.asset_url }}"
+          echo "Publicando versão $version com URL $url"
+          wingetcreate update SmapItProject.SmapIt --version $version --u "$url|x64|Inno" --submit --token $env:WINGET_TOKEN
