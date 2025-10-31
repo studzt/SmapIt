@@ -23,9 +23,10 @@ jobs:
         id: release_info
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          RELEASE_TAG: ${{ github.event.release.tag_name }}
         run: |
-          echo "version=${GITHUB_REF_NAME}" >> $env:GITHUB_OUTPUT
-          $assetUrl = gh release view $env:GITHUB_REF_NAME --json assets --jq ".assets[0].url"
+          echo "version=$env:RELEASE_TAG" >> $env:GITHUB_OUTPUT
+          $assetUrl = gh release view $env:RELEASE_TAG --json assets --jq ".assets[0].url" | Out-String -Trim
           echo "asset_url=$assetUrl" >> $env:GITHUB_OUTPUT
 
       - name: Publish to winget repository
