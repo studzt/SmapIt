@@ -1,0 +1,5 @@
+files:
+  - source: /Main/lang/pt.json
+    translation: /Main/lang/%two_letters_code%.json
+  - source: /Updater/lang/pt.json
+    translation: /Updater/lang/%two_letters_code%.json
