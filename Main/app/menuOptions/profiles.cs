@@ -89,7 +89,6 @@ namespace SmapIt.app.menuOptions
                                     { "profilePath", profilePath }
                                 };
 
-                                Console.WriteLine();
                                 translator.printFormatted("options.profiles.new_success", replacements);
                                 break;
                             }
@@ -141,7 +140,7 @@ namespace SmapIt.app.menuOptions
                         };
 
                         translator.printFormatted("options.profiles.delete_confirmation", replacements);
-                        Console.Write("> ");
+                        Console.Write("\n> ");
 
                         string? choice = Console.ReadLine();
                         if (choice != "1")

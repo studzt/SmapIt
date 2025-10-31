@@ -1,11 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.IO;
-using System.Net.Http;
+﻿using System.Diagnostics;
 using System.Reflection;
-using System.Threading;
-using System.Threading.Tasks;
 using Newtonsoft.Json.Linq;
 using SmapIt.Core;
 using SmapIt.Utils;
@@ -89,7 +83,8 @@ namespace SmapIt.App
             await checkUpdates(smapiPath, smapitShortcut);
             Console.WriteLine("\n--------------------------\n");
 
-            if (Convert.ToBoolean(SettingsManager.Settings["always_ask_profile"]))
+            if (Convert.ToBoolean(SettingsManager.Settings["always_ask_profile"])
+                && profileManager.GetProfiles().Length >= 1)
             {
                 while (true)
                 {
@@ -166,7 +161,7 @@ namespace SmapIt.App
             }
             else
             {
-                AppCore.Logger.WriteLine(LOG_IDENT, "Any profile is set as default and always ask profile option is not enabled.");
+                AppCore.Logger.WriteLine(LOG_IDENT, "Any profile is set as default and always ask profile option is not enabled or there is any profile created.");
             }
 
             AppCore.Logger.WriteLine(LOG_IDENT, $"Starting SMAPI at: {smapiPath}");
