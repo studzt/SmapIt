@@ -1,5 +1,5 @@
 ﻿using System.Reflection;
-
+using System.Drawing;
 using SmapIt.Utils;
 using SmapIt.Core;
 
@@ -167,18 +167,29 @@ namespace SmapIt.App.menuOptions
             string shortcutPath = Path.Combine(stardewDirectory, "SmapIt.lnk");
             string exeDirectory = AppContext.BaseDirectory;
 
-            if (exeDirectory == null)
+            if (string.IsNullOrEmpty(exeDirectory))
             {
                 translator.print("options.install.smapit_error");
-                AppCore.Logger.WriteLine(LOG_IDENT, "Failed to get exe directory. Try reinstalling SmapIt Manager in a folder.");
+                AppCore.Logger.WriteLine(LOG_IDENT, "Failed to get exe directory. Try reinstalling SmapIt Manager into a folder.");
                 return;
             }
 
-            string exeFullPath = Path.Combine(exeDirectory, "SmapIt Manager.exe");
+            string exePath = Assembly.GetExecutingAssembly().Location;
             string arguments = $"--start --path \"{Path.Combine(stardewDirectory, "StardewModdingAPI.exe")}\"";
 
-            string iconPath = Path.Combine(exeDirectory, "icon.ico");
-            Shortcut.Create(exeFullPath, arguments, shortcutPath, iconPath);
+            string iconPath = Path.Combine(exeDirectory, "SmapIt_icon.ico");
+            if (!File.Exists(iconPath)){
+                Icon? icon = Icon.ExtractAssociatedIcon(exePath);
+                if (icon != null)
+                {
+                    using (FileStream fs = new FileStream(iconPath, FileMode.Create))
+                    {
+                        icon.Save(fs);
+                    }
+                }
+            }
+
+            Shortcut.Create(exePath, arguments, shortcutPath, iconPath);
 
             AppCore.Logger.WriteLine(LOG_IDENT, "SmapIt installation completed successfully.");
             translator.print("options.install.smapit_success");
