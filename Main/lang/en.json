@@ -200,6 +200,9 @@
       ],
       "load_success": [
         "[green]Profile loaded successfully!"
+      ],
+      "profile_set_default": [
+        "[yellow]The default profile has been set to none."
       ]
     }
   },
