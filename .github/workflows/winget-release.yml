@@ -27,7 +27,7 @@ jobs:
         run: |
           $version = $env:RELEASE_TAG -replace '^v',''
           echo "version=$version" >> $env:GITHUB_OUTPUT
-          $assetUrl = gh release view $env:RELEASE_TAG --json assets --jq ".assets[0].url" | Out-String -Trim
+          $assetUrl = gh release view $env:RELEASE_TAG --json assets --jq ".assets[0].url"
           echo "asset_url=$assetUrl" >> $env:GITHUB_OUTPUT
 
       - name: Publish to winget repository
