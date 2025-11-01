@@ -1,6 +1,4 @@
-﻿using System;
-using System.IO;
-using WindowsShortcutFactory;
+﻿using WindowsShortcutFactory;
 using SmapIt.Core;
 
 namespace SmapIt.Utils

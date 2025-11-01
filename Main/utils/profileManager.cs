@@ -1,10 +1,4 @@
-﻿using System;
-using SmapIt.Core;
-using SmapIt.Utils;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using SmapIt.Core;
 
 namespace SmapIt.Utils
 {
@@ -46,10 +40,27 @@ namespace SmapIt.Utils
 
         public static bool Delete(string profile)
         {
+            var SettingsManager = new SettingsManager();
             var translator = new Translator();
 
             try
             {
+                string[] profileList = profileManager.GetProfiles();
+                if (profileList.Length <= 1) {
+                    AppCore.Logger.WriteLine(LOG_IDENT, "Attempt to delete the last profile: setting default profile to none.");
+                    SettingsManager.Settings["default_profile"] = "none";
+                    SettingsManager.SaveSettings();
+                    translator.print("options.profiles.profile_set_default");
+                }
+
+                if (profile == (string)SettingsManager.Settings["default_profile"])
+                {
+                    AppCore.Logger.WriteLine(LOG_IDENT, "Attempt to delete the profile that was set to default: setting default profile to none.");
+                    SettingsManager.Settings["default_profile"] = "none";
+                    SettingsManager.SaveSettings();
+                    translator.print("options.profiles.profile_set_default");
+                }
+
                 AppCore.Logger.WriteLine(LOG_IDENT, "Deleting profile...");
 
                 string profilesPath = Directory.CreateDirectory(Path.Combine(exeDir, "Profiles")).FullName;
