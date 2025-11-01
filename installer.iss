@@ -18,7 +18,7 @@ DisableProgramGroupPage=yes
 LicenseFile=TermsOfUse.txt
 OutputDir=output\Installer
 OutputBaseFilename=SmapIt-v{#MyAppVersion}
-SetupIconFile=./SmapIt.ico
+SetupIconFile=./Main/SmapIt.ico
 
 PrivilegesRequired=lowest
 SolidCompression=yes
