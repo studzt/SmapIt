@@ -1,7 +1,7 @@
-﻿using System.Reflection;
-using System.Drawing;
+﻿using System.Drawing;
 using SmapIt.Utils;
 using SmapIt.Core;
+using System.Reflection;
 
 namespace SmapIt.App.menuOptions
 {
@@ -174,19 +174,17 @@ namespace SmapIt.App.menuOptions
                 return;
             }
 
-            string exePath = Assembly.GetExecutingAssembly().Location;
+            string exePath = Path.Combine(exeDirectory, "SmapIt Manager.exe");
             string arguments = $"--start --path \"{Path.Combine(stardewDirectory, "StardewModdingAPI.exe")}\"";
 
-            string iconPath = Path.Combine(exeDirectory, "SmapIt_icon.ico");
-            if (!File.Exists(iconPath)){
-                Icon? icon = Icon.ExtractAssociatedIcon(exePath);
-                if (icon != null)
-                {
-                    using (FileStream fs = new FileStream(iconPath, FileMode.Create))
-                    {
-                        icon.Save(fs);
-                    }
-                }
+            string iconPath = Path.Combine(exeDirectory, "SmapIt.ico");
+            if (!File.Exists(iconPath))
+            {
+                Stream iconFile = Assembly.GetExecutingAssembly().GetManifestResourceStream("SmapIt.SmapIt.ico")
+                    ?? throw new FileNotFoundException();
+
+                FileStream fs = new FileStream(iconPath, FileMode.Create, FileAccess.Write);
+                iconFile.CopyTo(fs);
             }
 
             Shortcut.Create(exePath, arguments, shortcutPath, iconPath);
