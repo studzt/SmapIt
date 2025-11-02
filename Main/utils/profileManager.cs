@@ -1,4 +1,5 @@
-﻿using SmapIt.Core;
+﻿using System.Reflection;
+using SmapIt.Core;
 
 namespace SmapIt.Utils
 {
@@ -26,6 +27,45 @@ namespace SmapIt.Utils
                 string profilePath = Directory.CreateDirectory(Path.Combine(profilesPath, name)).FullName;
 
                 AppCore.Logger.WriteLine(LOG_IDENT, $"Successfully created new profile in: {profilePath}");
+
+                try
+                {
+                    AppCore.Logger.WriteLine(LOG_IDENT, $"Moving default mods to: {profilePath}");
+                    string defaultModsPrefix = "SmapIt.resources.defaultMods.";
+                    var defaultMods = Assembly.GetExecutingAssembly().GetManifestResourceNames()
+                        .Where(name => name.StartsWith(defaultModsPrefix))
+                        .ToList();
+
+                    foreach (string mod in defaultMods)
+                    {
+                        AppCore.Logger.WriteLine(LOG_IDENT, $"Moving: {mod}");
+
+                        string relative = mod.Substring(defaultModsPrefix.Length);
+                        relative = relative.Replace('.', Path.DirectorySeparatorChar);
+
+                        int lastSep = relative.LastIndexOf(Path.DirectorySeparatorChar);
+                        if (lastSep >= 0)
+                        {
+                            relative = relative[..lastSep] + "." + relative[(lastSep + 1)..];
+                        }
+
+                        string modFolder = Path.Combine(profilePath, Path.GetDirectoryName(relative)!);
+                        if (!Directory.Exists(modFolder))
+                        {
+                            Directory.CreateDirectory(modFolder);
+                        }
+
+                        Stream? file = Assembly.GetExecutingAssembly().GetManifestResourceStream(mod);
+                        FileStream output = new(Path.Combine(profilePath, relative), FileMode.Create, FileAccess.ReadWrite);
+                        file!.CopyTo(output);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    AppCore.Logger.WriteLine(LOG_IDENT, $"Failed to move default mods to: {profilePath}");
+                    AppCore.Logger.WriteException(LOG_IDENT, ex);
+                }
+
                 return profilePath;
             }
 

@@ -1,4 +1,4 @@
-﻿using SmapIt.Utils;
+using SmapIt.Utils;
 
 namespace SmapIt.app.menuOptions
 {
@@ -103,12 +103,19 @@ namespace SmapIt.app.menuOptions
                                 break;
                             }
 
-                            var replacements = new Dictionary<string, string>
+                            try
                             {
-                                { "profilePath", profilePath }
-                            };
+                                Process.Start("explorer.exe", profilePath);
+                            }
+                            catch (Exception ex)
+                            {
+                                var replacements = new Dictionary<string, string>
+                                {
+                                    { "profilePath", profilePath }
+                                };
 
-                            translator.printFormatted("options.profiles.profile_path", replacements);
+                                translator.printFormatted("options.profiles.profile_path", replacements);
+                            }
                             break;
                         }
 
