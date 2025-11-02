@@ -1,12 +1,5 @@
-﻿using SmapIt.Core;
-using SmapIt.Utils;
-using System;
-using System.Collections.Generic;
+﻿using SmapIt.Utils;
 using System.Diagnostics;
-using System.Linq;
-using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SmapIt.Core
 {

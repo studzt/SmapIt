@@ -1,6 +1,6 @@
-﻿using System.Globalization;
+﻿using Newtonsoft.Json.Linq;
+using System.Globalization;
 using System.Reflection;
-using Newtonsoft.Json.Linq;
 
 namespace SmapIt.Utils
 {

@@ -1,8 +1,7 @@
-﻿using System.Globalization;
-using System.Reflection;
-using Newtonsoft.Json.Linq;
-using System.Diagnostics;
+﻿using Newtonsoft.Json.Linq;
 using SmapIt.Core;
+using System.Diagnostics;
+using System.Globalization;
 
 namespace SmapIt.Utils
 {
@@ -13,7 +12,7 @@ namespace SmapIt.Utils
         private JObject translations;
         private static string langFolderPath = "";
         private static string defaultLangFile = Debugger.IsAttached ? "pt.json" : "en.json";
-        
+
         // Constructor
         public Translator(string language = "")
         {

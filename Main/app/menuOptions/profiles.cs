@@ -1,12 +1,5 @@
-﻿using SmapIt.Core;
-using SmapIt.Utils;
-using System;
-using System.Collections.Generic;
+﻿using SmapIt.Utils;
 using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Xml.Linq;
 
 namespace SmapIt.app.menuOptions
 {
@@ -111,62 +104,55 @@ namespace SmapIt.app.menuOptions
                                 break;
                             }
 
-                            try
+                            var replacements = new Dictionary<string, string>
                             {
-                                Process.Start("explorer.exe", profilePath);
-                            }
-                            catch (Exception ex)
-                            {
-                                var replacements = new Dictionary<string, string>
-                                {
-                                    { "profilePath", profilePath }
-                                };
+                                { "profilePath", profilePath }
+                            };
 
-                                translator.printFormatted("options.profiles.profile_path", replacements);
-                            }
+                            translator.printFormatted("options.profiles.profile_path", replacements);
                             break;
                         }
 
 
                     case "3":
-                    {
-                        string? choosenProfile = chooseProfile();
-                        if (String.IsNullOrEmpty(choosenProfile))
                         {
-                            break;
-                        }
+                            string? choosenProfile = chooseProfile();
+                            if (String.IsNullOrEmpty(choosenProfile))
+                            {
+                                break;
+                            }
 
-                        string? profilePath = profileManager.GetProfilePath(choosenProfile);
-                        if (String.IsNullOrEmpty(profilePath))
-                        {
-                            break;
-                        }
+                            string? profilePath = profileManager.GetProfilePath(choosenProfile);
+                            if (String.IsNullOrEmpty(profilePath))
+                            {
+                                break;
+                            }
 
-                        var replacements = new Dictionary<string, string>
+                            var replacements = new Dictionary<string, string>
                         {
                             { "profilePath", profilePath }
                         };
 
-                        translator.printFormatted("options.profiles.delete_confirmation", replacements);
-                        Console.Write("\n> ");
+                            translator.printFormatted("options.profiles.delete_confirmation", replacements);
+                            Console.Write("\n> ");
 
-                        string? choice = Console.ReadLine();
-                        if (choice != "1")
+                            string? choice = Console.ReadLine();
+                            if (choice != "1")
+                            {
+                                return;
+                            }
+
+                            bool success = profileManager.Delete(choosenProfile);
+                            if (!success) { return; }
+
+                            translator.print("options.profiles.delete_success");
+                            break;
+                        }
+
+                    case "4":
                         {
                             return;
                         }
-
-                        bool success = profileManager.Delete(choosenProfile);
-                        if (!success) { return; }
-
-                        translator.print("options.profiles.delete_success");
-                        break;
-                    }
-
-                    case "4":
-                    {
-                        return;
-                    }
                 }
             }
         }

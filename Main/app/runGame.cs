@@ -1,8 +1,8 @@
-﻿using System.Diagnostics;
-using System.Reflection;
-using Newtonsoft.Json.Linq;
+﻿using Newtonsoft.Json.Linq;
 using SmapIt.Core;
 using SmapIt.Utils;
+using System.Diagnostics;
+using System.Reflection;
 
 namespace SmapIt.App
 {
@@ -51,7 +51,7 @@ namespace SmapIt.App
             AppCore.Logger.WriteLine(LOG_IDENT, $"Profile loaded successfully.");
             return true;
         }
-        
+
         public async Task run(string smapiPath)
         {
             if (!File.Exists(smapiPath))
@@ -230,7 +230,7 @@ namespace SmapIt.App
                 var SmapItUpdater = new SmapItUpdater();
                 await SmapItUpdater.Update(client, smapitShortcut);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 AppCore.Logger.WriteException(LOG_IDENT, ex);
                 translator.print("start_types.run.smapit_error");

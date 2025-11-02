@@ -1,9 +1,6 @@
-﻿using System.Diagnostics;
-using System.Net.NetworkInformation;
-using System.Threading.Tasks;
-using Newtonsoft.Json.Linq;
-
+﻿using Newtonsoft.Json.Linq;
 using SmapIt.Utils;
+using System.Diagnostics;
 
 namespace main
 {
@@ -180,7 +177,7 @@ namespace main
                 Console.WriteLine(ex.Message);
             }
         }
-       static async Task<bool> checkInternetConnection()
+        static async Task<bool> checkInternetConnection()
         {
             try
             {

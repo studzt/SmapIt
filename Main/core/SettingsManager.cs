@@ -1,6 +1,4 @@
 ﻿using Newtonsoft.Json;
-using SmapIt.Utils;
-using System.Reflection;
 
 namespace SmapIt.Core
 {
