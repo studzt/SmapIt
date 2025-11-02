@@ -46,7 +46,8 @@ namespace SmapIt.Utils
             try
             {
                 string[] profileList = profileManager.GetProfiles();
-                if (profileList.Length <= 1) {
+                if (profileList.Length <= 1)
+                {
                     AppCore.Logger.WriteLine(LOG_IDENT, "Attempt to delete the last profile: setting default profile to none.");
                     SettingsManager.Settings["default_profile"] = "none";
                     SettingsManager.SaveSettings();

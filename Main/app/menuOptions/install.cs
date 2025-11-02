@@ -1,6 +1,5 @@
-﻿using System.Drawing;
+﻿using SmapIt.Core;
 using SmapIt.Utils;
-using SmapIt.Core;
 using System.Reflection;
 
 namespace SmapIt.App.menuOptions

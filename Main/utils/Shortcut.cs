@@ -1,5 +1,5 @@
-﻿using WindowsShortcutFactory;
-using SmapIt.Core;
+﻿using SmapIt.Core;
+using WindowsShortcutFactory;
 
 namespace SmapIt.Utils
 {

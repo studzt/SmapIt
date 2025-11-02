@@ -1,6 +1,5 @@
-﻿using SmapIt.Utils;
-using SmapIt.Core;
-using SmapIt.App;
+﻿using SmapIt.Core;
+using SmapIt.Utils;
 
 namespace SmapIt.App.menuOptions
 {
