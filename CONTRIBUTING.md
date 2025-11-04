@@ -1,8 +1,3 @@
-# Contributing to SmapIt
-
-Thanks for you interest in improving this project!<br>
-This guide will help you to contribute effectively.
-
 ## How can you contribute
 
 **1. Translations**<br>
