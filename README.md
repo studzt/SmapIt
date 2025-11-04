@@ -12,20 +12,24 @@
 
 [![Latest](https://img.shields.io/github/v/release/studzt/SmapIt)](https://github.com/studzt/SmapIt/releases/latest)
 [![Downloads](https://img.shields.io/github/downloads-pre/studzt/SmapIt/latest/total)](https://github.com/studzt/SmapIt/releases/latest)
+[![Discord](https://img.shields.io/discord/1370893741157515334?logo=discord&logoColor=white&label=discord&color=4d3dff)](https://discord.gg/PXPbUhtq2E)
 [![Workflow Status](https://img.shields.io/github/actions/workflow/status/studzt/SmapIt/.NET%20Debug.yaml)](https://github.com/studzt/SmapIt/actions)
 [![Crowdin](https://badges.crowdin.net/smapit/localized.svg)](https://crowdin.com/project/smapit)
 [![License](https://img.shields.io/github/license/studzt/SmapIt)](https://github.com/studzt/SmapIt)
-
 </div>
 
-## ❓ What is?
-SmapIt is a tool that helps you adding some extra functions to Smapi.
+## ❓ What is
+SmapIt is a tool that helps you adding some extra functions to SMAPI.
 It includes:
 - Automatic SMAPI updater
 - Hide SMAPI console
 - Profiles
 
 More functionalities will be added soon! (its in beta version)
+
+## 💡 Need help?
+- Check out the [wiki](https://github.com/studzt/SmapIt/wiki) for quick answers.<br>
+- Or join our [discord server](https://discord.gg/PXPbUhtq2E) to ask questions and share ideas.
 
 ## ⚙️ Installation
 To use SmapIt you need Windows 10+
@@ -50,5 +54,5 @@ After that, download the [latest release](https://github.com/studzt/SmapIt/relea
 If you found a bug, please open an issue.
 
 ## ❤️ Thank you
-Thanks for testing my app in beta version!
+Thanks for using my app in beta version!
 Feedback is appreciated.
