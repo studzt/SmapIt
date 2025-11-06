@@ -16,6 +16,8 @@
 [![Workflow Status](https://img.shields.io/github/actions/workflow/status/studzt/SmapIt/.NET%20Debug.yaml)](https://github.com/studzt/SmapIt/actions)
 [![Crowdin](https://badges.crowdin.net/smapit/localized.svg)](https://crowdin.com/project/smapit)
 [![License](https://img.shields.io/github/license/studzt/SmapIt)](https://github.com/studzt/SmapIt)
+
+<img width="483" height="226" alt="image" src="https://github.com/user-attachments/assets/37ea8573-2098-4803-8cc1-366bd683921c" />
 </div>
 
 ## ❓ What is
