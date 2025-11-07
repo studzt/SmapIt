@@ -2,8 +2,10 @@
 > The only official places to download SmapIt are this GitHub repository and [winget](https://winstall.app/apps/SmapItProject.SmapIt). Any other websites offering downloads are not reviewed or approved by us.
 
 <h1 align="center">
+  <img width="32" height="32" alt="SmapIt" src="https://github.com/user-attachments/assets/b61b3509-3d90-4539-98a4-a2f5b8a13571" />
   SmapIt - Making the good even better.
 </h1>
+
 <p align="center">
   A tool for installing, updating, and launching Stardew Valley with SMAPI — simple and automatic.
 </p>
