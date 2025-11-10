@@ -17,7 +17,7 @@
 
     "error": [
         "[red]Ocorreu um erro ao tentar atualizar. Isso pode ter acontecido por vários motivos.",
-        "Acesse o GitHub do SmapIt para mais informações."
+        "Informações sobre o erro serão enviadas automaticamente."
     ],
 
     "smapit_closed_err": [
