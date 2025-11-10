@@ -13,7 +13,7 @@
     ],
     "error": [
         "[red]An error occurred while attempting to update. This may have happened for several reasons.",
-        "Visit SmapIt's GitHub for more information."
+        "Information about the error will be sent automatically."
     ],
     "smapit_closed_err": [
         "[red]An error occurred while attempting to update: The main SmapIt process did not close automatically after 15 seconds."
