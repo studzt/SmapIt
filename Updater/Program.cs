@@ -36,7 +36,7 @@ namespace main
                     // Set TracesSampleRate to 1.0 to capture 100%
                     // of transactions for tracing.
                     // We recommend adjusting this value in production.
-                    options.TracesSampleRate = 1.0;
+                    options.TracesSampleRate = 0.2;
                 });
 
                 if (args.Length < 2)
@@ -86,8 +86,8 @@ namespace main
                 }
                 catch (Exception ex)
                 {
-                    translator.print("error");
                     SentrySdk.CaptureException(ex);
+                    translator.print("error");
                 }
             }
 
@@ -199,8 +199,8 @@ namespace main
             }
             catch (Exception ex)
             {
-                translator.print("start_types.run.error");
                 SentrySdk.CaptureException(ex);
+                translator.print("start_types.run.error");
             }
         }
         static async Task<bool> checkInternetConnection()

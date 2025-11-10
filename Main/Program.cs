@@ -38,7 +38,7 @@ class Program
                 // Set TracesSampleRate to 1.0 to capture 100%
                 // of transactions for tracing.
                 // We recommend adjusting this value in production.
-                options.TracesSampleRate = 1.0;
+                options.TracesSampleRate = 0.2;
             });
 
             AppCore.Logger.Initialize();
@@ -68,6 +68,7 @@ class Program
         }
         catch (Exception ex)
         {
+            SentrySdk.CaptureException(ex);
             Console.WriteLine("Unexpected error. Check logs for more information");
             AppCore.Logger.WriteLine(LOG_IDENT, "FATAL ERROR");
             AppCore.Logger.WriteException(LOG_IDENT, ex);
