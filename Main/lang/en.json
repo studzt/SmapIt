@@ -166,6 +166,10 @@
       "error": [
         "[red]An unexpected error occurred. Check logs for more information."
       ],
+      "file_being_used": [
+        "[red]The profile could not be deleted because some of its files are being used by another process.",
+        "[darkyellow]Please check if Stardew Valley is open or try again later."
+      ],
       "new_name": [
         "[darkyellow]Choose a name to the new profile:"
       ],
