@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json.Linq;
 using SmapIt.Utils;
 using System.Diagnostics;
-using Sentry;
+using System.Reflection;
 
 namespace main
 {
@@ -29,6 +29,7 @@ namespace main
                     // We enable it here for demonstration purposes when first trying Sentry.
                     // You shouldn't do this in your applications unless you're troubleshooting issues with Sentry.
                     options.Debug = false;
+                    options.Release = $"updater-{Assembly.GetExecutingAssembly().GetName().Version?.ToString()}";
 
                     // This option is recommended. It enables Sentry's "Release Health" feature.
                     options.AutoSessionTracking = true;

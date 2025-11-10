@@ -7,7 +7,7 @@
     <Nullable>enable</Nullable>
     <AssemblyName>SmapIt Updater</AssemblyName>
 
-	  <Version>0.2.4</Version>
+	  <Version>0.2.5</Version>
 
 	  <ApplicationIcon>SmapIt.ico</ApplicationIcon>
 	  
