@@ -1,7 +1,7 @@
 ﻿using SmapIt.App;
 using SmapIt.Core;
 using SmapIt.Utils;
-using Sentry;
+using System.Reflection;
 
 class Program
 {
@@ -31,6 +31,7 @@ class Program
                 // We enable it here for demonstration purposes when first trying Sentry.
                 // You shouldn't do this in your applications unless you're troubleshooting issues with Sentry.
                 options.Debug = false;
+                options.Release = $"smapit-{Assembly.GetExecutingAssembly().GetName().Version?.ToString()}";
 
                 // This option is recommended. It enables Sentry's "Release Health" feature.
                 options.AutoSessionTracking = true;
