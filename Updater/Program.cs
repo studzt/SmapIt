@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json.Linq;
 using SmapIt.Utils;
 using System.Diagnostics;
+using Sentry;
 
 namespace main
 {
@@ -14,6 +15,29 @@ namespace main
             try
             {
                 await Mutex.AcquireAsync(cts.Token);
+
+                // Initialize Sentry
+                SentrySdk.Init(options =>
+                {
+                    // A Sentry Data Source Name (DSN) is required.
+                    // See https://docs.sentry.io/product/sentry-basics/dsn-explainer/
+                    // You can set it in the SENTRY_DSN environment variable, or you can set it in code here.
+                    options.Dsn = "https://72c00da18e16d53bf259ba4062a9b52a@o4510337710555136.ingest.de.sentry.io/4510337733296208";
+
+                    // When debug is enabled, the Sentry client will emit detailed debugging information to the console.
+                    // This might be helpful, or might interfere with the normal operation of your application.
+                    // We enable it here for demonstration purposes when first trying Sentry.
+                    // You shouldn't do this in your applications unless you're troubleshooting issues with Sentry.
+                    options.Debug = false;
+
+                    // This option is recommended. It enables Sentry's "Release Health" feature.
+                    options.AutoSessionTracking = true;
+
+                    // Set TracesSampleRate to 1.0 to capture 100%
+                    // of transactions for tracing.
+                    // We recommend adjusting this value in production.
+                    options.TracesSampleRate = 0.2;
+                });
 
                 if (args.Length < 2)
                 {
@@ -41,6 +65,7 @@ namespace main
                     // Waiting main process to be closed
                     if (!smapitProcess.HasExited && !exitEvent.WaitOne(15000))
                     {
+                        SentrySdk.CaptureMessage("SmapIt did not closed after 15 seconds");
                         translator.print("smapit_closed_err");
                         return;
                     }
@@ -61,8 +86,8 @@ namespace main
                 }
                 catch (Exception ex)
                 {
+                    SentrySdk.CaptureException(ex);
                     translator.print("error");
-                    Console.WriteLine(ex.Message);
                 }
             }
 
@@ -74,7 +99,7 @@ namespace main
 
             catch (Exception ex)
             {
-                Console.WriteLine(ex.ToString());
+                SentrySdk.CaptureException(ex);
                 Console.ReadLine();
             }
             finally
@@ -129,6 +154,7 @@ namespace main
             if (string.IsNullOrEmpty(downloadUrl))
             {
                 translator.print("error");
+                SentrySdk.CaptureMessage("Download URL not found");
                 Console.WriteLine("Download URL not found.");
                 return;
             }
@@ -173,8 +199,8 @@ namespace main
             }
             catch (Exception ex)
             {
+                SentrySdk.CaptureException(ex);
                 translator.print("start_types.run.error");
-                Console.WriteLine(ex.Message);
             }
         }
         static async Task<bool> checkInternetConnection()

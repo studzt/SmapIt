@@ -90,6 +90,7 @@ namespace SmapIt.Utils
                     }
                     catch (Exception ex)
                     {
+                        SentrySdk.CaptureException(ex);
                         WriteLine(LOG_IDENT, "Failed to delete log!");
                         WriteException(LOG_IDENT, ex);
                     }

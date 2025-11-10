@@ -1,6 +1,7 @@
 ﻿using SmapIt.App;
 using SmapIt.Core;
 using SmapIt.Utils;
+using Sentry;
 
 class Program
 {
@@ -17,6 +18,29 @@ class Program
 
         try
         {
+            // Initialize Sentry
+            SentrySdk.Init(options =>
+            {
+                // A Sentry Data Source Name (DSN) is required.
+                // See https://docs.sentry.io/product/sentry-basics/dsn-explainer/
+                // You can set it in the SENTRY_DSN environment variable, or you can set it in code here.
+                options.Dsn = "https://72c00da18e16d53bf259ba4062a9b52a@o4510337710555136.ingest.de.sentry.io/4510337733296208";
+
+                // When debug is enabled, the Sentry client will emit detailed debugging information to the console.
+                // This might be helpful, or might interfere with the normal operation of your application.
+                // We enable it here for demonstration purposes when first trying Sentry.
+                // You shouldn't do this in your applications unless you're troubleshooting issues with Sentry.
+                options.Debug = false;
+
+                // This option is recommended. It enables Sentry's "Release Health" feature.
+                options.AutoSessionTracking = true;
+
+                // Set TracesSampleRate to 1.0 to capture 100%
+                // of transactions for tracing.
+                // We recommend adjusting this value in production.
+                options.TracesSampleRate = 0.2;
+            });
+
             AppCore.Logger.Initialize();
             AppCore.tempLogger.Initialize(true);
 
@@ -44,6 +68,7 @@ class Program
         }
         catch (Exception ex)
         {
+            SentrySdk.CaptureException(ex);
             Console.WriteLine("Unexpected error. Check logs for more information");
             AppCore.Logger.WriteLine(LOG_IDENT, "FATAL ERROR");
             AppCore.Logger.WriteException(LOG_IDENT, ex);

@@ -135,6 +135,7 @@ namespace SmapIt.Core
             }
             catch (Exception ex)
             {
+                SentrySdk.CaptureException(ex);
                 Console.WriteLine(ex.Message);
                 return false;
             }

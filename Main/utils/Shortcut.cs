@@ -35,6 +35,7 @@ namespace SmapIt.Utils
             }
             catch (Exception ex)
             {
+                SentrySdk.CaptureException(ex);
                 AppCore.Logger.WriteLine(LOG_IDENT, $"Unexpected error while creating shortcut");
                 AppCore.Logger.WriteException(LOG_IDENT, ex);
             }

@@ -1,5 +1,5 @@
 Terms of Use – SmapIt  
-Last updated on 12/05/2025
+Last updated on 09/11/2025
 
 1. About SmapIt
 
@@ -24,3 +24,15 @@ SmapIt is an independent tool and has no official affiliation with SMAPI or Star
 5. Changes to the Terms
 
 These Terms of Use may be updated at any time without prior notice. It is the user’s responsibility to review them periodically. Continued use of SmapIt after any changes implies acceptance of the revised terms.
+
+6. Error and Performance Monitoring
+
+SmapIt uses Sentry (https://sentry.io/) for error and performance monitoring.  
+This service automatically collects technical information when an error occurs, such as the type of error, application version, and operating system details.  
+
+No personal or identifiable user information is intentionally collected or stored.  
+The data sent to Sentry is used solely for debugging purposes and to improve the stability of SmapIt.  
+
+Users can review the Sentry Privacy Policy at: https://sentry.io/privacy/  
+
+The data is processed through Sentry servers located in the European Union.
