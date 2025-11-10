@@ -176,6 +176,11 @@
         "[red]Ocorreu um erro inesperado. Cheque os logs para mais informações."
       ],
 
+      "file_being_used": [
+        "[red]Não foi possível deletar o perfil porque tem algum arquivo dele sendo usado por outro processo.",
+        "[darkyellow]Verifique se o Stardew Valley está aberto ou tente novamente mais tarde."
+      ],
+
       "new_name": [
         "[darkyellow]Escolha um nome para o novo perfil:"
       ],
