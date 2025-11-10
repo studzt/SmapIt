@@ -121,6 +121,15 @@ namespace SmapIt.Utils
                 return true;
             }
 
+            catch (IOException ex) when ((uint)ex.HResult == 0x80070020)
+            {
+                SentrySdk.CaptureException(ex);
+                translator.print("options.profiles.file_being_used");
+                AppCore.Logger.WriteLine(LOG_IDENT, "File is being used by another process.");
+                AppCore.Logger.WriteException(LOG_IDENT, ex);
+                return false;
+            }
+
             catch (Exception ex)
             {
                 SentrySdk.CaptureException(ex);
