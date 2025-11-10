@@ -48,6 +48,7 @@ namespace SmapIt.Utils
             }
             catch (Exception ex)
             {
+                SentrySdk.CaptureException(ex);
                 Console.WriteLine($"Failed to load translations: {ex.Message}");
                 translations = new JObject();
             }
@@ -70,7 +71,10 @@ namespace SmapIt.Utils
             foreach (var part in key.Split('.'))
             {
                 if (current == null)
+                {
+                    SentrySdk.CaptureMessage($"Translation key not found: {key}");
                     return new List<string> { $"[red]Translation key not found: {key}" };
+                }
 
                 current = current[part];
             }

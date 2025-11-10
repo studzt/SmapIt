@@ -105,7 +105,10 @@ namespace SmapIt.Utils
             foreach (var part in key.Split('.'))
             {
                 if (current == null)
+                {
+                    SentrySdk.CaptureMessage($"Translation key not found: {key}");
                     return new List<string> { $"[red]Translation key not found: {key}" };
+                }
 
                 current = current[part];
             }
