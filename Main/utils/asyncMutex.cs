@@ -59,6 +59,7 @@ namespace SmapIt.Utils
                     }
                     catch (Exception ex)
                     {
+                        SentrySdk.CaptureException(ex);
                         taskCompletionSource.TrySetException(ex);
                     }
                 },

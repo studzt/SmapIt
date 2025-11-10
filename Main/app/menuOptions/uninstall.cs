@@ -84,6 +84,7 @@ namespace SmapIt.App.menuOptions
                         }
                         catch (Exception ex)
                         {
+                            SentrySdk.CaptureException(ex);
                             AppCore.Logger.WriteLine(LOG_IDENT, "Unexpected error when trying to uninstall SmapIt:");
                             AppCore.Logger.WriteException(LOG_IDENT, ex);
                         }

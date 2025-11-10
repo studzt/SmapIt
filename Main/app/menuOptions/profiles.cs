@@ -108,8 +108,9 @@ namespace SmapIt.app.menuOptions
                             {
                                 Process.Start("explorer.exe", profilePath);
                             }
-                            catch (Exception)
+                            catch (Exception ex)
                             {
+                                SentrySdk.CaptureException(ex);
                                 var replacements = new Dictionary<string, string>
                                 {
                                     { "profilePath", profilePath }

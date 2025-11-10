@@ -232,6 +232,7 @@ namespace SmapIt.App
             }
             catch (Exception ex)
             {
+                SentrySdk.CaptureException(ex);
                 AppCore.Logger.WriteException(LOG_IDENT, ex);
                 translator.print("start_types.run.smapit_error");
                 Console.ReadLine();
@@ -341,6 +342,7 @@ namespace SmapIt.App
             }
             catch (Exception ex)
             {
+                SentrySdk.CaptureException(ex);
                 AppCore.Logger.WriteLine(LOG_IDENT, "Unexpected error at trying to start SMAPI:");
                 AppCore.Logger.WriteException(LOG_IDENT, ex);
                 translator.print("start_types.run.error_start");

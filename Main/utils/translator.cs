@@ -92,6 +92,7 @@ namespace SmapIt.Utils
             }
             catch (Exception ex)
             {
+                SentrySdk.CaptureException(ex);
                 Console.WriteLine($"Failed to load translations: {ex.Message}");
                 translations = new JObject();
             }

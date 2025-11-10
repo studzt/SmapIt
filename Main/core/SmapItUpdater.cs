@@ -45,6 +45,7 @@ namespace SmapIt.Core
 
             catch (Exception ex)
             {
+                SentrySdk.CaptureException(ex);
                 translator.print("start_types.run.error_smapit");
                 AppCore.Logger.WriteLine(LOG_IDENT, "Unexpected error when trying to update SmapIt:");
                 AppCore.Logger.WriteException(LOG_IDENT, ex);
