@@ -13,7 +13,7 @@
 <div align="center">
 
 [![Latest](https://img.shields.io/github/v/release/studzt/SmapIt)](https://github.com/studzt/SmapIt/releases/latest)
-[![Downloads](https://img.shields.io/github/downloads-pre/studzt/SmapIt/latest/total)](https://github.com/studzt/SmapIt/releases/latest)
+[![Downloads](https://img.shields.io/github/downloads/studzt/SmapIt/latest/total)](https://github.com/studzt/SmapIt/releases/latest)
 [![Discord](https://img.shields.io/discord/1370893741157515334?logo=discord&logoColor=white&label=discord&color=4d3dff)](https://discord.gg/PXPbUhtq2E)
 [![Workflow Status](https://img.shields.io/github/actions/workflow/status/studzt/SmapIt/.NET%20Debug.yaml)](https://github.com/studzt/SmapIt/actions)
 [![Crowdin](https://badges.crowdin.net/smapit/localized.svg)](https://crowdin.com/project/smapit)
