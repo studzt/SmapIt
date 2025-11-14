@@ -35,13 +35,13 @@ jobs:
       - name: Build Installer
         shell: pwsh
         run: |
-          $content = Get-Content installer.iss
+          $content = Get-Content ./build/installer.iss
           $version = "${{ github.event.inputs.version }}"
           $content = $content -replace '^\s*#define\s+MyAppVersion\s+".*"', "#define MyAppVersion `"$version`""
           $content = $content -replace '^\s*OutputBaseFilename=.*', "OutputBaseFilename=SmapIt-v$version"
-          $content | Set-Content installer_temp.iss
+          $content | Set-Content installer.iss
           
-          iscc installer_temp.iss
+          iscc installer.iss
 
       - name: Create Git tag
         run: |
