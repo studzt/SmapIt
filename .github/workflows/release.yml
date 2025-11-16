@@ -30,7 +30,7 @@ jobs:
         run: dotnet publish ./Updater/Updater.csproj -c Release -p:PublishSingleFile=true -p:CommitHash=${{ github.sha }} -p:CommitRef=${{ github.ref_type }}/${{ github.ref_name }} -p:DebugType=None -p:IncludeSymbols=false -r win-x64 --self-contained false -o output
         
       - name: Install Inno Setup
-        run: choco install innosetup -y
+        run: winget install --id=JRSoftware.InnoSetup -e --accept-source-agreements --accept-package-agreements
 
       - name: Build Installer
         shell: pwsh
