@@ -30,18 +30,18 @@ jobs:
         run: dotnet publish ./Updater/Updater.csproj -c Release -p:PublishSingleFile=true -p:CommitHash=${{ github.sha }} -p:CommitRef=${{ github.ref_type }}/${{ github.ref_name }} -p:DebugType=None -p:IncludeSymbols=false -r win-x64 --self-contained false -o output
         
       - name: Install Inno Setup
-        run: choco install innosetup -y
+        run: winget install --id=JRSoftware.InnoSetup -e --accept-source-agreements --accept-package-agreements
 
       - name: Build Installer
         shell: pwsh
         run: |
-          $content = Get-Content installer.iss
+          $content = Get-Content ./build/installer.iss
           $version = "${{ github.event.inputs.version }}"
           $content = $content -replace '^\s*#define\s+MyAppVersion\s+".*"', "#define MyAppVersion `"$version`""
           $content = $content -replace '^\s*OutputBaseFilename=.*', "OutputBaseFilename=SmapIt-v$version"
-          $content | Set-Content installer_temp.iss
+          $content | Set-Content installer.iss
           
-          iscc installer_temp.iss
+          iscc installer.iss
 
       - name: Create Git tag
         run: |
