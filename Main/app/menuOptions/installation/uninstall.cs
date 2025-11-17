@@ -1,7 +1,7 @@
 ﻿using SmapIt.Core;
 using SmapIt.Utils;
 
-namespace SmapIt.App.menuOptions
+namespace SmapIt.App.menuOptions.installation
 {
     internal class Uninstall
     {

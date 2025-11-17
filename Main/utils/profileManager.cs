@@ -56,7 +56,7 @@ namespace SmapIt.Utils
                         }
 
                         Stream? file = Assembly.GetExecutingAssembly().GetManifestResourceStream(mod);
-                        FileStream output = new(Path.Combine(profilePath, relative), FileMode.Create, FileAccess.ReadWrite);
+                        using FileStream output = new(Path.Combine(profilePath, relative), FileMode.Create, FileAccess.ReadWrite);
                         file!.CopyTo(output);
                     }
                 }
@@ -124,7 +124,7 @@ namespace SmapIt.Utils
             catch (IOException ex) when ((uint)ex.HResult == 0x80070020)
             {
                 SentrySdk.CaptureException(ex);
-                translator.print("options.profiles.file_being_used");
+                translator.print("options.profiles.del_file_being_used");
                 AppCore.Logger.WriteLine(LOG_IDENT, "File is being used by another process.");
                 AppCore.Logger.WriteException(LOG_IDENT, ex);
                 return false;

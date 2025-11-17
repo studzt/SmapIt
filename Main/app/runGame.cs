@@ -17,43 +17,73 @@ namespace SmapIt.App
         private readonly Translator translator = new Translator();
         private readonly SettingsManager SettingsManager = new SettingsManager();
 
-        bool loadProfile(string smapiPath, string profile)
+        (bool, bool) loadProfile(string smapiPath, string profile)
         {
-            AppCore.Logger.WriteLine(LOG_IDENT, $"Loading profile: {profile}");
-            string? profilePath = profileManager.GetProfilePath(profile);
-            if (string.IsNullOrEmpty(profilePath))
+            try
             {
-                AppCore.Logger.WriteLine(LOG_IDENT, "Failed to get profile path.");
-                return false;
+                AppCore.Logger.WriteLine(LOG_IDENT, $"Loading profile: {profile}");
+                string? profilePath = profileManager.GetProfilePath(profile);
+                if (string.IsNullOrEmpty(profilePath))
+                {
+                    AppCore.Logger.WriteLine(LOG_IDENT, "Failed to get profile path.");
+                    return (false, false);
+                }
+
+                string? stardewDirectory = Path.GetDirectoryName(smapiPath);
+                if (string.IsNullOrEmpty(stardewDirectory))
+                {
+                    AppCore.Logger.WriteLine(LOG_IDENT, "Failed to get SMAPI directory.");
+                    return (false, false);
+                }
+
+                string modsFolder = Directory.CreateDirectory(Path.Combine(stardewDirectory, "Mods")).FullName;
+                Directory.Delete(modsFolder, true);
+
+                modsFolder = Directory.CreateDirectory(Path.Combine(stardewDirectory, "Mods")).FullName;
+
+                foreach (string file in Directory.GetFiles(profilePath, "*.*", SearchOption.AllDirectories))
+                {
+                    string relativePath = Path.GetRelativePath(profilePath, file);
+                    string destinationPath = Path.Combine(modsFolder, relativePath);
+
+                    Directory.CreateDirectory(Path.GetDirectoryName(destinationPath) ?? modsFolder);
+                    File.Copy(file, destinationPath, true);
+                }
+
+                AppCore.Logger.WriteLine(LOG_IDENT, $"Profile loaded successfully.");
+                return (true, true);
+            }
+            catch (Exception ex) when ((uint)ex.HResult == 0x80070005 ||
+                                        (uint)ex.HResult == 0x80070020 ||
+                                            (uint)ex.HResult == 0x80070021)
+            {
+                SentrySdk.CaptureException(ex);
+                AppCore.Logger.WriteLine(LOG_IDENT, "Failed to load profile because a file is being used by another program or access denied.");
+                AppCore.Logger.WriteException(LOG_IDENT, ex);
+                translator.print("options.profiles.load_file_being_used");
+                return (false, true);
             }
 
-            string? smapiDirectory = Path.GetDirectoryName(smapiPath);
-            if (string.IsNullOrEmpty(smapiDirectory))
+            catch (Exception ex)
             {
-                AppCore.Logger.WriteLine(LOG_IDENT, "Failed to get SMAPI directory.");
-                return false;
+                SentrySdk.CaptureException(ex);
+                AppCore.Logger.WriteLine(LOG_IDENT, "Unhandled error:");
+                AppCore.Logger.WriteException(LOG_IDENT, ex);
+                return (false, false);
             }
-
-            string modsFolder = Directory.CreateDirectory(Path.Combine(smapiDirectory, "Mods")).FullName;
-            Directory.Delete(modsFolder, true);
-
-            modsFolder = Directory.CreateDirectory(Path.Combine(smapiDirectory, "Mods")).FullName;
-
-            foreach (string file in Directory.GetFiles(profilePath, "*.*", SearchOption.AllDirectories))
-            {
-                string relativePath = Path.GetRelativePath(profilePath, file);
-                string destinationPath = Path.Combine(modsFolder, relativePath);
-
-                Directory.CreateDirectory(Path.GetDirectoryName(destinationPath) ?? modsFolder);
-                File.Copy(file, destinationPath, true);
-            }
-
-            AppCore.Logger.WriteLine(LOG_IDENT, $"Profile loaded successfully.");
-            return true;
         }
 
         public async Task run(string smapiPath)
         {
+            var processName = Path.GetFileNameWithoutExtension(smapiPath);
+            if (Process.GetProcessesByName(processName).Length > 0)
+            {
+                AppCore.Logger.WriteLine(LOG_IDENT, "SMAPI is already running.");
+                translator.print("start_types.run.already_running");
+                Console.ReadLine();
+                Environment.Exit(0);
+            }
+
             if (!File.Exists(smapiPath))
             {
                 AppCore.Logger.WriteLine(LOG_IDENT, $"Invalid SMAPI path: {smapiPath}");
@@ -80,6 +110,7 @@ namespace SmapIt.App
                 return;
             }
 
+            Console.WriteLine();
             await checkUpdates(smapiPath, smapitShortcut);
             Console.WriteLine("\n--------------------------\n");
 
@@ -111,11 +142,15 @@ namespace SmapIt.App
                         {
                             string selectedProfile = profileList[choice - 1];
                             translator.print("start_types.run.loading_profile");
-                            bool result = loadProfile(smapiPath, selectedProfile);
-                            if (!result)
+                            (bool success, bool handled) = loadProfile(smapiPath, selectedProfile);
+                            if (!success && !handled)
                             {
                                 translator.print("start_types.run.profile_load_error");
                                 Console.ReadLine();
+                                return;
+                            }
+                            else if (!success)
+                            {
                                 return;
                             }
 
@@ -148,11 +183,15 @@ namespace SmapIt.App
                     return;
                 }
 
-                bool success = loadProfile(smapiPath, profile);
-                if (!success)
+                (bool success, bool handled) = loadProfile(smapiPath, profile);
+                if (!success && !handled)
                 {
                     translator.print("start_types.run.profile_load_error");
                     Console.ReadLine();
+                    return;
+                }
+                else if (!success)
+                {
                     return;
                 }
 
@@ -294,7 +333,7 @@ namespace SmapIt.App
         private void launchGame(string smapiPath)
         {
             translator.print("start_types.run.starting");
-            Console.WriteLine("\n--------------------------\n");
+            Console.WriteLine();
 
             try
             {
