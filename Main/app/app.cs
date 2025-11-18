@@ -14,6 +14,7 @@ namespace SmapIt.App
 
             while (true)
             {
+                Console.WriteLine();
                 translator.print("main_menu.main");
                 Console.WriteLine("");
 
@@ -27,24 +28,19 @@ namespace SmapIt.App
                         break;
 
                     case "2":
-                        await new Install().install();
+                        await new InstallManager().manager();
                         break;
 
                     case "3":
-                        new Uninstall().uninstall();
+                        new Profiles().profiles();
                         break;
 
                     case "4":
                         new Settings().settings();
                         break;
 
-                    case "5":
-                        new Profiles().profiles();
-                        break;
-
                     default:
                         translator.print("main_menu.invalid_input");
-                        Console.WriteLine();
                         break;
                 }
             }

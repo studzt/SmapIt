@@ -140,10 +140,13 @@ namespace SmapIt.App.menuOptions
                         SettingsManager.SaveSettings();
                         translator.print("options.settings.success");
                     }
-                    else
                     {
                         translator.print("options.profiles.invalid_choice");
                     }
+                }
+                else if (String.IsNullOrEmpty(input))
+                {
+                    return;
                 }
                 else
                 {

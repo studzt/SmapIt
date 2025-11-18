@@ -42,7 +42,6 @@ namespace SmapIt.App.menuOptions
 
                 translator.printFormatted("start_types.run.start_run", replacements);
                 await new runGame().run(smapiPath);
-                Console.WriteLine("\n--------------------------\n");
             }
 
             if (installs.Count >= 2)
@@ -84,7 +83,6 @@ namespace SmapIt.App.menuOptions
             };
                 translator.printFormatted("start_types.run.start_run", replacements);
                 await new runGame().run(smapiPath);
-                Console.WriteLine("\n--------------------------\n");
             }
         }
     }
