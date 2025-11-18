@@ -28,6 +28,10 @@
       "3) Ver opção de inicialização",
       "4) Voltar"
     ],
+    "launch_options": [
+      "[green]A opção de inicialização é: [darkyellow]\"{smapitPath}\" %command%",
+      "[yellow]Adicione ela no seu launcher pra iniciar o SmapIt automaticamente."
+    ],
     "install": {
       "searching_stardew": [
         "[yellow]Procurando por instalações do Stardew Valley..."
@@ -100,8 +104,8 @@
         "[green]SmapIt instalado com sucesso!"
       ],
       "smapit_path": [
-        "[yellow]Se você usa a Steam, adicione essa opção de inicialização ao seu jogo: [darkyellow]\"{smapitPath}\" %command%",
-        "[yellow]Se você não usa a Steam, abra o atalho do SmapIt que está dentro da pasta do jogo quando quiser jogar Stardew Valley."
+        "[yellow]Se você usa algum launcher, adicione essa opção de inicialização ao seu jogo: [darkyellow]\"{smapitPath}\" %command%",
+        "[yellow]Se você não usa um launcher, abra o atalho do SmapIt que está dentro da pasta do jogo quando quiser jogar Stardew Valley."
       ],
       "smapit_error": [
         "[red]Ocorreu um erro ao tentar instalar o SmapIt:"
@@ -110,7 +114,7 @@
 
     "uninstall": {
       "select_installation": [
-        "[darkyellow]Selecione uma instalação do Stardew Valley para continuar:"
+        "[darkyellow]Selecione uma instalação (pressione ENTER para voltar):"
       ],
       "no_installations": [
         "[red]Nenhuma instalação do SmapIt foi encontrada."
@@ -186,9 +190,9 @@
       "main": [
         "[darkyellow]Escolha uma opção sobre os perfis:",
         "[white]1) Criar um perfil",
-        "2) Abrir pasta do perfil",
-        "3) Deletar um perfil",
-        "4) Voltar ao menu inicial"
+        "2) Deletar um perfil",
+        "3) Abrir pasta do perfil",
+        "4) Voltar"
       ],
 
       "error": [
@@ -219,7 +223,7 @@
       ],
 
       "choose_profile": [
-        "[darkyellow]Escolha um perfil:"
+        "[darkyellow]Escolha um perfil (pressione ENTER para voltar):"
       ],
 
       "invalid_choice": [

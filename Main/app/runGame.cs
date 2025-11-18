@@ -80,8 +80,7 @@ namespace SmapIt.App
             {
                 AppCore.Logger.WriteLine(LOG_IDENT, "SMAPI is already running.");
                 translator.print("start_types.run.already_running");
-                Console.ReadLine();
-                Environment.Exit(0);
+                return;
             }
 
             if (!File.Exists(smapiPath))
@@ -163,6 +162,10 @@ namespace SmapIt.App
                             translator.print("options.profiles.invalid_choice");
                             continue;
                         }
+                    }
+                    else if (String.IsNullOrEmpty(input))
+                    {
+                        return;
                     }
                     else
                     {

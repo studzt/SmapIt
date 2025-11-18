@@ -1,5 +1,6 @@
 ﻿using SmapIt.Utils;
 using SmapIt.App.menuOptions.installation;
+using SmapIt.app.menuOptions.installation;
 
 namespace SmapIt.app.menuOptions
 {
@@ -31,6 +32,8 @@ namespace SmapIt.app.menuOptions
 
                     case "3":
                         {
+                            new InstallOptions().installOptions();
+                            Console.WriteLine();
                             break;
                         }
 

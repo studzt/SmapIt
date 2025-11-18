@@ -8,7 +8,6 @@ namespace SmapIt.App.menuOptions.installation
         private const string LOG_IDENT = "App::Uninstall";
         public void uninstall()
         {
-            // Classes
             var translator = new Translator();
             var SettingsManager = new SettingsManager();
 
@@ -21,25 +20,31 @@ namespace SmapIt.App.menuOptions.installation
                 return;
             }
 
-            translator.print("options.uninstall.select_installation");
-
-            var installList = installs.ToList();
-            for (int i = 0; i < installList.Count; i++)
-                Console.WriteLine($"{i + 1}. {installList[i].Key} - {installList[i].Value}");
-
             KeyValuePair<string, string> selectedInstall;
             while (true)
             {
+                translator.print("options.uninstall.select_installation");
+
+                var installList = installs.ToList();
+                for (int i = 0; i < installList.Count; i++)
+                    Console.WriteLine($"{i + 1}. {installList[i].Key} - {installList[i].Value}");
+
                 Console.WriteLine();
                 Console.Write("> ");
-                if (int.TryParse(Console.ReadLine(), out int choice) &&
+                string? input = Console.ReadLine();
+                if (int.TryParse(input, out int choice) &&
                     choice >= 1 && choice <= installList.Count)
                 {
                     selectedInstall = installList[choice - 1];
                     break;
                 }
+                else if (String.IsNullOrEmpty(input))
+                {
+                    return;
+                }
 
                 translator.print("options.uninstall.invalid_choice");
+                Console.WriteLine();
             }
 
             var replacements = new Dictionary<string, string>
