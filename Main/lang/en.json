@@ -8,62 +8,76 @@
       "-------------------------------------",
       "",
       "[darkyellow]What would you like to do?[white]",
-      "1) Start the game with SmapIt.",
-      "2) Install SmapIt in a Stardew Valley folder.",
-      "3) Uninstall SmapIt from a Stardew Valley folder.",
-      "4) Open settings.",
-      "5) Configure profiles"
+      "1) Jogar",
+      "2) Gerenciar instalações",
+      "3) Gerenciar perfis",
+      "4) Configurações"
     ],
     "invalid_input": [
-      "[red]Invalid input! Choose a valid option."
+      "[red]Entrada inválida! Escolha o número correspondente para uma das opções acima."
     ]
   },
   "options": {
+    "install_manager": [
+      "[yellow]Escolha uma opção:",
+      "[white]1) Instalar SmapIt",
+      "2) Desinstalar SmapIt",
+      "3) Ver opção de inicialização",
+      "4) Voltar"
+    ],
+    "launch_options": [
+      "[green]A opção de inicialização é: [darkyellow]\"{smapitPath}\" %command%",
+      "[yellow]Adicione ela no seu launcher pra iniciar o SmapIt automaticamente."
+    ],
     "install": {
       "searching_stardew": [
         "[yellow]Looking for Stardew Valley installations..."
       ],
       "select_directory": [
-        "[darkyellow]Enter the Stardew Valley installation directory where you want to install SmapIt."
+        "[darkyellow]Enter the Stardew Valley installation directory where you want to install SmapIt.",
+        "Pressione ENTER sem nada para voltar"
       ],
       "fix_directory": [
         "[red]It looks like SmapIt is already installed in this directory, but some files are missing.",
-        "[darkyellow]Would you like to try installing anyway to attempt a fix?",
-        "[white]1) Yes.",
-        "2) No."
+        "[darkyellow]Deseja tentar instalar mesmo assim para tentar consertar?",
+        "[white]1) Sim",
+        "2) Não"
       ],
       "fix_directorysteam": [
         "[red]It looks like SmapIt is already installed in the Steam directory, but some files are missing.",
         "[darkyellow]Would you like to try installing anyway to attempt a fix?",
-        "[white]1) Yes.",
-        "2) No."
+        "[white]1) Sim",
+        "2) Não"
       ],
       "invalid_directory": [
         "[red]Invalid directory or SmapIt is already installed."
       ],
       "found_steam": [
-        "[darkyellow]A Stardew Valley installation was found in the Steam games folder. Install here?",
-        "[white]1) Yes.",
-        "2) No.",
-        "3) Return to main menu."
+        "[darkyellow]Uma instalação do Stardew Valley foi encontrada na pasta de jogos da Steam. Deseja instalar nela?",
+        "[white]1) Sim",
+        "2) Não",
+        "3) Voltar ao menu inicial"
       ],
       "smapi_check": [
-        "[yellow]Checking if SMAPI is installed..."
+        "[yellow]Verificando se o SMAPI está instalado..."
+      ],
+      "smapi_already_installed": [
+        "[green]SMAPI já está instalado."
       ],
       "smapi_download": [
-        "[yellow]Downloading the latest version of SMAPI..."
+        "[yellow]Baixando a versão mais atual do SMAPI..."
       ],
       "smapi_install": [
-        "[yellow]Installing SMAPI..."
+        "[yellow]Instalando o SMAPI..."
       ],
       "smapi_success": [
-        "[green]SMAPI installed successfully!"
+        "[green]SMAPI instalado com sucesso!"
       ],
       "github_not_available": [
-        "[red]Failed to download SMAPI: GitHub is not available. Check your internet connection."
+        "[red]Erro ao baixar o SMAPI: O Github não está disponível. Verifique sua conexão com a internet."
       ],
       "smapi_error": [
-        "[red]An error occurred while trying to download SMAPI. Try again later."
+        "[red]Ocorreu um erro ao tentar baixar o SMAPI. Tente novamente mais tarde."
       ],
       "smapit_install": [
         "[yellow]Installing SmapIt..."
@@ -85,8 +99,8 @@
         "[green]SmapIt installed successfully!"
       ],
       "smapit_path": [
-        "[yellow]If you're using Steam, add this launch option to your game: [darkyellow]\"{smapitPath}\" %command%",
-        "[yellow]If you're not using Steam, open the SmapIt shortcut in the game folder whenever you want to play Stardew Valley."
+        "[yellow]Se você usa algum launcher, adicione essa opção de inicialização ao seu jogo: [darkyellow]\"{smapitPath}\" %command%",
+        "[yellow]Se você não usa um launcher, abra o atalho do SmapIt que está dentro da pasta do jogo quando quiser jogar Stardew Valley."
       ],
       "smapit_error": [
         "[red]An error occurred while trying to install SmapIt:"
@@ -94,7 +108,7 @@
     },
     "uninstall": {
       "select_installation": [
-        "[darkyellow]Select a Stardew Valley installation to continue:"
+        "[darkyellow]Selecione uma instalação (pressione ENTER para voltar):"
       ],
       "no_installations": [
         "[red]No SmapIt installations found."
@@ -117,12 +131,20 @@
         "[green]SmapIt was successfully uninstalled from this installation."
       ]
     },
+    "install_options": {
+      "main": [
+        "[yellow]Escolha uma instalação para ver a opção de inicialização ou pressione ENTER para voltar:"
+      ],
+      "installOption": [
+        "[yellow]Para iniciar o SmapIt direto pelo seu launcher, adicione essa opção de inicialização no launcher: [darkyellow]{installOption}"
+      ]
+    },
     "settings": {
       "settings": [
         "[darkyellow]Choose a setting:",
         "1) Language - [yellow]{lang}",
-        "2) Hide SMAPI console - {hSmapiConsole}",
-        "3) Automatically update SMAPI - {aUpdateSmapi}",
+        "2) Esconder console do SMAPI - {hSmapiConsole}",
+        "3) Atualizar SMAPI autommaticamente - {aUpdateSmapi}",
         "4) Automatically update SmapIt - {aUpdateSmapIt}",
         "5) Default profile: [yellow]{defaultProfile}",
         "6) Always ask what profile to use when starting the game - {askProfile}",
@@ -159,16 +181,20 @@
       "main": [
         "[darkyellow]Choose an option about profiles:",
         "[white]1) Create a profile",
-        "2) Open a profile folder",
-        "3) Delete a profile",
-        "4) Start menu"
+        "2) Deletar um perfil",
+        "3) Abrir pasta do perfil",
+        "4) Voltar"
       ],
       "error": [
         "[red]An unexpected error occurred. Check logs for more information."
       ],
-      "file_being_used": [
-        "[red]The profile could not be deleted because some of its files are being used by another process.",
-        "[darkyellow]Please check if Stardew Valley is open or try again later."
+      "del_file_being_used": [
+        "[red]Não foi possível deletar o perfil porque tem algum arquivo dele sendo usado por outro programa.",
+        "[darkyellow]Verifique se o Stardew Valley está aberto ou tente novamente mais tarde."
+      ],
+      "load_file_being_used": [
+        "[red]Não foi possível carregar o perfil porque algum arquivo dele está sendo usado por outro programa.",
+        "[darkyellow]Verifique se o Stardew Valley está aberto ou tente novamente mais tarde."
       ],
       "new_name": [
         "[darkyellow]Choose a name to the new profile:"
@@ -181,7 +207,7 @@
         "[yellow]To add mods to this profile go to: [darkyellow]{profilePath}"
       ],
       "choose_profile": [
-        "[darkyellow]Choose a profile (type the profile number):"
+        "[darkyellow]Escolha um perfil (pressione ENTER para voltar):"
       ],
       "invalid_choice": [
         "[red]Invalid choice."
@@ -257,34 +283,34 @@
         "[yellow]Try disabling the option to hide the SMAPI console to resolve the issue, or reinstall Stardew Valley and SMAPI."
       ],
       "started_smapi": [
-        "[green]SMAPI started successfully!"
+        "[green]SMAPI iniciado com sucesso!"
       ],
       "invalid_smapi_path": [
-        "[red]Error starting SMAPI: The provided path does not lead to StardewModdingAPI.exe",
-        "[yellow]Try reinstalling SMAPI or SmapIt."
+        "[red]Erro ao iniciar o SMAPI: Caminho fornecido não leva ao StardewModdingAPI.exe",
+        "[yellow]Tente reinstalar o SMAPI ou o SmapIt."
       ],
       "github_not_available": [
-        "[red]Could not connect to GitHub servers. SMAPI and SmapIt cannot be updated."
+        "[red]Não foi possível estabelecer conexão com os servidores do Github. Não será possível atualizar o SMAPI e o SmapIt."
       ],
       "error_smapit": [
         "[red]SmapIt could not be updated.",
         "Check the logs to try to resolve the issue."
       ],
       "check_smapi": [
-        "[yellow]Checking for SMAPI updates..."
+        "[yellow]Procurando por atualizações do SMAPI..."
       ],
       "error_smapi": [
         "[red]Could not check for SMAPI updates."
       ],
       "smapi_avaiable": [
-        "[yellow]New version of SMAPI available ({version} -> {newVersion})",
+        "[yellow]Nova versão do SMAPI disponível ({version} -> {newVersion})",
         "Updating..."
       ],
       "smapi_updated": [
-        "[green]The latest version of SMAPI is already installed."
+        "[green]A versão mais atual do SMAPI já está instalada."
       ],
       "error_update_smapi": [
-        "[red]Error updating SMAPI. Try again later."
+        "[red]Erro ao atualizar o SMAPI. Tente novamente mais tarde."
       ],
       "error_start": [
         "[red]An error occurred while starting the game."
