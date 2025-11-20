@@ -20,8 +20,8 @@
   "options": {
     "install_manager": [
       "[yellow]Escolha uma opção:",
-      "[white]1) Instalar SmapIt",
-      "2) Desinstalar SmapIt",
+      "[white]1) Install SmapIt",
+      "2) Uninstall SmapIt",
       "3) Ver opção de inicialização",
       "4) Voltar"
     ],
