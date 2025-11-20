@@ -8,10 +8,10 @@
       "-------------------------------------",
       "",
       "[darkyellow]What would you like to do?[white]",
-      "1) Jogar",
-      "2) Gerenciar instalações",
-      "3) Gerenciar perfis",
-      "4) Configurações"
+      "1) Play",
+      "2) Manage installations",
+      "3) Manage profiles",
+      "4) Settings"
     ],
     "invalid_input": [
       "[red]Entrada inválida! Escolha o número correspondente para uma das opções acima."
