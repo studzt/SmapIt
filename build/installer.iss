@@ -44,7 +44,7 @@ Name: "{autodesktop}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"; Tasks: de
 [Code]
 procedure CurStepChanged(CurStep: TSetupStep);
 begin
-  if CurStep = ssInstall then
+  if (CurStep = ssInstall) and (not WizardSilent) then
   begin
     if FrameworkIsNotInstalled then
       InstallFramework;
