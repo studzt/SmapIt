@@ -58,7 +58,7 @@ After that, download the [latest release](https://github.com/studzt/SmapIt/relea
 If you found a bug, please open an issue.
 
 ## ❤️ Thank you
-Thanks for using my app in beta version!<br>
+Thanks for using my app!<br>
 Feedback is appreciated.<br>
 
 Made with love in Brazil 🇧🇷
