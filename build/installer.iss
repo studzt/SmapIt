@@ -5,7 +5,7 @@
 #include ".\build\dependency_installer.iss"
 
 [Setup]
-AppId={{7CFA1A64-BC94-4794-8CB8-0EE3788ABC31}}
+AppId={{7CFA1A64-BC94-4794-8CB8-0EE3788ABC31}
 AppName={#MyAppName}
 AppVersion={#MyAppVersion}
 MinVersion=10.0.14393
