@@ -19,7 +19,7 @@
 [![Crowdin](https://badges.crowdin.net/smapit/localized.svg)](https://crowdin.com/project/smapit)
 [![License](https://img.shields.io/github/license/studzt/SmapIt)](https://github.com/studzt/SmapIt)
 
-<img width="483" height="226" alt="image" src="https://github.com/user-attachments/assets/37ea8573-2098-4803-8cc1-366bd683921c" />
+<img width="371" height="216" alt="image" src="https://github.com/user-attachments/assets/a9f5bf2f-984f-464c-aab3-b31f23bd10a6" />
 </div>
 
 ## ❓ What is
