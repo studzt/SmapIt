@@ -26,7 +26,7 @@
       "4) Back"
     ],
     "launch_options": [
-      "[green]The startup option is: “{smapitPath}” %command%",
+      "[green]The startup option is: [darkyellow]“{smapitPath}” %command%",
       "[yellow]Add it to your launcher to start SmapIt automatically."
     ],
     "install": {
