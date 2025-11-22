@@ -14,7 +14,7 @@
       "4) Settings"
     ],
     "invalid_input": [
-      "[red]Entrada inválida! Escolha o número correspondente para uma das opções acima."
+      "[red]Invalid entry! Select the corresponding number for one of the options above."
     ]
   },
   "options": {
