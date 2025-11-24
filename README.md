@@ -45,7 +45,7 @@ You can download SmapIt using [winget](https://winstall.app/apps/SmapItProject.S
 winget install SmapItProject.SmapIt
 ```
 ---
-If you want to install it manually, first download the [.NET Desktop Runtime 8.0.16](https://builds.dotnet.microsoft.com/dotnet/WindowsDesktop/8.0.16/windowsdesktop-runtime-8.0.16-win-x64.exe).<br>
+If you want to install it manually, first download the [.NET Desktop Runtime 8](https://builds.dotnet.microsoft.com/dotnet/aspnetcore/Runtime/8.0.22/aspnetcore-runtime-8.0.22-win-x64.exe).<br>
 After that, download the [latest release](https://github.com/studzt/SmapIt/releases/latest) of SmapIt, run it and just follow the app instructions.
 
 > [!IMPORTANT]
