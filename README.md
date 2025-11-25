@@ -29,7 +29,7 @@ It includes:
 - Hide SMAPI console
 - Profiles
 
-More functionalities will be added soon! (its in beta version)
+More functionalities will be added soon!
 
 ## 💡 Need help?
 - Check out the [wiki](https://github.com/studzt/SmapIt/wiki) for quick answers.<br>
